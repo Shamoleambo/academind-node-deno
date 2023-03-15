@@ -1,8 +1,8 @@
-const text = 'Test text to a file!!!'
+import { serve } from 'https://deno.land/std@0.179.0/http/mod.ts'
 
-const encoder = new TextEncoder()
-const data = encoder.encode(text)
-
-Deno.writeFile('message.txt', data).then(() => {
-  console.log('File written')
+serve(_req => new Response('Hello, world'), {
+  onListen({ port }) {
+    console.log(`Server started at http://localhost:${port}`)
+    // ... more info specific to your server ..
+  }
 })
